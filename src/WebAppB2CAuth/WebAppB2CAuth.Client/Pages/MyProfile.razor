@@ -1,0 +1,25 @@
+﻿@page "/profile/claims"
+@rendermode InteractiveWebAssembly
+@* This simple page shows you how to access the claims and the user data. *@
+
+<h3>My Profile</h3>
+<AuthorizeView>
+	<Authorized>
+		<p>Hello, @context.User.Identity!.Name!</p>
+		<ul>
+			@foreach (var claim in context.User.Claims)
+			{
+				<li><b>@claim.Type:</b> @claim.Value</li>
+			}
+		</ul>
+		<a class="btn btn-danger" href="/MicrosoftIdentity/Account/SignOut">Sign Out</a>
+	</Authorized>
+	<NotAuthorized>
+		<p>Opps! You are not signed in! Make sure to sign in to see your profile details</p>
+		<a class="btn btn-primary" href="/MicrosoftIdentity/Account/SignIn">Sign In</a>
+	</NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}
