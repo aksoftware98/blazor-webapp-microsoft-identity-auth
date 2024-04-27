@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Components.Web;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using WebAppB2CAuth.Client;
 
-namespace WebAppB2CAuth;
 
 public class PersistingServerAuthenticationStateProvider : ServerAuthenticationStateProvider
 {
@@ -38,7 +36,39 @@ public class PersistingServerAuthenticationStateProvider : ServerAuthenticationS
 		var user = authState.User;
 		if (user.Identity!.IsAuthenticated)
 		{
-			_state.PersistAsJson(nameof(ClaimsPrincipal), user.Claims);
+			if (!ValidateIdClaim(user, out var userId))
+				return;
+			
+			var userInfo = BuildUserInfo(user, userId!);
+			_state.PersistAsJson(nameof(UserInfo), userInfo);
 		}
 	}
+
+	private static UserInfo BuildUserInfo(ClaimsPrincipal user, string userId)
+	{
+		var name = user.FindFirstValue("name"); // Based on AD B2C, the email claim is not always ClaimTypes.Name
+		var email = user.FindFirstValue("emails"); // Based on AD B2C, the email claim is not always ClaimTypes.Email
+		var givenName = user.FindFirstValue(ClaimTypes.GivenName);
+		var surname = user.FindFirstValue(ClaimTypes.Surname);
+		// Extract more claims as needed to populate the user object
+		var userInfo = new UserInfo
+		{
+			Id = userId!,
+			DisplayName = name,
+			Email = email,
+			GivenName = givenName,
+			Surname = surname
+		};
+		return userInfo;
+	}
+
+	private static bool ValidateIdClaim(ClaimsPrincipal user, out string? userId)
+	{
+		userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+		if (string.IsNullOrWhiteSpace(userId)) // Abort the operation if the user ID is not found
+			return false;
+
+		return true;
+	}
+
 }

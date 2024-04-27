@@ -10,14 +10,23 @@ public class PersistentAuthenticationStateProvider : AuthenticationStateProvider
 
 	public PersistentAuthenticationStateProvider(PersistentComponentState state)
 	{
-		if (!state.TryTakeFromJson<IEnumerable<Claim>>(nameof(ClaimsPrincipal), out var claims) || claims is null)
+		if (!state.TryTakeFromJson<UserInfo>(nameof(UserInfo), out var userInfo) || userInfo == null)
 		{
 			return;
 		}
 
+		var claims = new[]
+		{
+			new Claim(ClaimTypes.NameIdentifier, userInfo.Id),
+			new Claim(ClaimTypes.Name, userInfo.DisplayName ?? string.Empty),
+			new Claim(ClaimTypes.Email, userInfo.Email ?? string.Empty),
+			new Claim(ClaimTypes.GivenName, userInfo.GivenName ?? string.Empty),
+			new Claim(ClaimTypes.Surname, userInfo.Surname ?? string.Empty),
+			// Add more claims as needed
+		};
+
 		// You can control the claims that are added to the identity here:
 		var identity = new ClaimsIdentity(claims, "PersistentAuthenticationStateProvider");
-
 		_authenticationStateTask = Task.FromResult(new AuthenticationState(new ClaimsPrincipal(identity)));
 	}
 
