@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34804.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppB2CAuth", "WebAppB2CAuth\WebAppB2CAuth\WebAppB2CAuth.csproj", "{DA6CDB5A-A091-4FE4-9A79-5D7964ABD5CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppB2CAuth", "WebAppB2CAuth\WebAppB2CAuth.csproj", "{DA6CDB5A-A091-4FE4-9A79-5D7964ABD5CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppB2CAuth.Client", "WebAppB2CAuth\WebAppB2CAuth.Client\WebAppB2CAuth.Client.csproj", "{6999A569-A802-43FC-91F3-34F5C92BDEA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppB2CAuth.Client", "WebAppB2CAuth.Client\WebAppB2CAuth.Client.csproj", "{6999A569-A802-43FC-91F3-34F5C92BDEA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
