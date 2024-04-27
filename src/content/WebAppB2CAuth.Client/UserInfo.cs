@@ -11,8 +11,6 @@ public class UserInfo
 
 	public string? Email { get; set; }
 
-	public List<Claim> Claims { get; set; } = new();
-
 	// Add properties based on the claims or details you want the user to have in the WebAssembly pages and components.
 
 }
