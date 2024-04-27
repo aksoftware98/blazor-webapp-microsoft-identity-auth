@@ -1,0 +1,9 @@
+﻿@inject NavigationManager Navigation
+<h3>RedirectToLogin...</h3>
+
+@code {
+	protected override void OnInitialized()
+	{
+		Navigation.NavigateTo($"MicrosoftIdentity/Account/SignIn?returnUrl={Uri.EscapeDataString(Navigation.Uri)}", forceLoad: true);
+	}
+}

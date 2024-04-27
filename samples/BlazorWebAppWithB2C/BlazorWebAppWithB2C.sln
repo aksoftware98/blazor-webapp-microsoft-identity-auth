@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34804.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAppWithB2C", "BlazorWebAppWithB2C\BlazorWebAppWithB2C.csproj", "{DA6CDB5A-A091-4FE4-9A79-5D7964ABD5CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAppWithB2C.Client", "BlazorWebAppWithB2C.Client\BlazorWebAppWithB2C.Client.csproj", "{6999A569-A802-43FC-91F3-34F5C92BDEA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA6CDB5A-A091-4FE4-9A79-5D7964ABD5CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA6CDB5A-A091-4FE4-9A79-5D7964ABD5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA6CDB5A-A091-4FE4-9A79-5D7964ABD5CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA6CDB5A-A091-4FE4-9A79-5D7964ABD5CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6999A569-A802-43FC-91F3-34F5C92BDEA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6999A569-A802-43FC-91F3-34F5C92BDEA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6999A569-A802-43FC-91F3-34F5C92BDEA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6999A569-A802-43FC-91F3-34F5C92BDEA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A47FE82-8F91-4A97-98D7-AB39931ED127}
+	EndGlobalSection
+EndGlobal

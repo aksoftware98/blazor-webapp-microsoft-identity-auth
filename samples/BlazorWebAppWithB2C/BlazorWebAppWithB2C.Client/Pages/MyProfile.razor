@@ -1,0 +1,33 @@
+﻿@page "/profile/claims"
+@using System.Security.Claims
+@rendermode InteractiveWebAssembly
+
+@* 
+	This simple page shows you how to access the claims and the user data on the client-side 
+	The claims in the WebAssembly rendered components are not the same claims that are available in the server-side components.
+	The client-side claims are set in the PersistentAuthenticationStateProvider and are extracted from the UserInfo object after the user logs-in.
+*@
+
+<h3>My Profile</h3>
+<AuthorizeView>
+	<Authorized>
+		<p>Hello, @context.User.Identity!.Name!</p>
+		<ul>
+
+			<li><b>Given Name:</b> @context.User.FindFirst(x => x.Type == ClaimTypes.GivenName)?.Value</li>
+			<li><b>Surname:</b> @context.User.FindFirst(x => x.Type == ClaimTypes.Surname)?.Value</li>
+			<li><b>Email:</b> @(context.User.FindFirst(x => x.Type == ClaimTypes.Email)?.Value ?? "Loading...")</li>
+			<li><b>ID:</b> @context.User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier)?.Value</li>
+
+		</ul>
+		<a class="btn btn-danger" href="/MicrosoftIdentity/Account/SignOut">Sign Out</a>
+	</Authorized>
+	<NotAuthorized>
+		<p>Opps! You are not signed in! Make sure to sign in to see your profile details</p>
+		<a class="btn btn-primary" href="/MicrosoftIdentity/Account/SignIn">Sign In</a>
+	</NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}
